@@ -16,9 +16,12 @@ mongoose.connect(mongodbUrl, {
     useCreateIndex: true
 }).catch(error => console.log(error.reason));
 
+app.use(express.json({ extended: false }));
+
 app.use('/api/user', userRoute);
 app.use('/api/profile', profileRoute);
 app.use('/api/post', postRoute);
 app.use('/api/auth', authRoute);
+
 
 app.listen(5000, () => { console.log("Server is running at http://localhost:5000") });
